@@ -5,3 +5,5 @@ Halloween themed custom watch face for Android Wear
 * Shows how to use a layout inside onDraw method for simple layouts
 * Uses a variety of BroadcastReceivers for handling different update events
 * Simple algorithm for determining moon phase day (0-29) so you can pick a moon icon given the date
+
+![alt text](https://github.com/brettwgreen/Hallowatch/blob/master/Screens/screen_framed.png "Hallowatch preview")
