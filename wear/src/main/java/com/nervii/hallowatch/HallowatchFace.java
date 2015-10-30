@@ -92,41 +92,14 @@ public class HallowatchFace extends CanvasWatchFaceService {
                         new SimpleDateFormat(DATE_FORMAT_DISPLAYED)
                                 .format(Calendar.getInstance().getTime()));
                 int moonPhase = MoonPhase.GetPhaseDay((GregorianCalendar) Calendar.getInstance());
-
-                if (moonPhase == 0) {
-                    imgMoon.setImageResource(R.drawable.m0);
+                if (moonPhase < 0 || moonPhase > 29) {
+                    moonPhase = 0;
                 }
-                else if (moonPhase == 15) {
-                    imgMoon.setImageResource(R.drawable.m15);
+                int resourceId = getResources().getIdentifier(String.format("moon%02d", moonPhase), "drawable", getPackageName() );
+                if (resourceId > 0) {
+                    imgMoon.setImageResource(resourceId);
+                    imgMoon.getDrawable().invalidateSelf();
                 }
-                else if (moonPhase <= 3) {
-                    imgMoon.setImageResource(R.drawable.m3);
-                }
-                else if (moonPhase <= 6) {
-                    imgMoon.setImageResource(R.drawable.m6);
-                }
-                else if (moonPhase <= 9) {
-                    imgMoon.setImageResource(R.drawable.m9);
-                }
-                else if (moonPhase <= 14) {
-                    imgMoon.setImageResource(R.drawable.m12);
-                }
-                else if (moonPhase <= 18) {
-                    imgMoon.setImageResource(R.drawable.m18);
-                }
-                else if (moonPhase <= 21) {
-                    imgMoon.setImageResource(R.drawable.m21);
-                }
-                else if (moonPhase <= 24){
-                    imgMoon.setImageResource(R.drawable.m24);
-                }
-                else if (moonPhase <= 29) {
-                    imgMoon.setImageResource(R.drawable.m27);
-                }
-                else {
-                    imgMoon.setImageResource(R.drawable.m0);
-                }
-                imgMoon.getDrawable().invalidateSelf();
             }
 
         };
